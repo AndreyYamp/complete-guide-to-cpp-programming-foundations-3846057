@@ -9,6 +9,7 @@ double my_average(int a, int8_t b, uint32_t c){
     double result = 0.0;
 
     // Write your code here
+    result = static_cast<double>(a + b + c) / 3;
     
     return result;
 }
