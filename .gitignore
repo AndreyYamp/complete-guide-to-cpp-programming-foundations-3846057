@@ -6,7 +6,6 @@ src/Ch00/CodeDemo
 src/Ch01/01_02b/CodeDemo
 src/Ch01/01_09b/CodeDemo
 src/Ch02/02_05b/CodeDemo
-.gitignore
 src/Ch02/02_08b/CodeDemo
 src/Ch02/02_09b/CodeDemo
 src/Ch02/02_10b/CodeDemo
@@ -21,3 +20,4 @@ src/Ch04/04_01b/CodeDemo
 src/Ch04/04_02b/CodeDemo
 src/Ch04/04_03b/CodeDemo
 src/Ch04/04_04b/CodeDemo
+src/Ch04/04_06b/CodeDemo
