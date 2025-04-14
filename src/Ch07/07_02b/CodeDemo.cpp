@@ -9,12 +9,27 @@
 
 class Inventory {
 public:
+    // Default Constructor
+    Inventory(): capacity(10){
+        items = new std::vector<std::string>();
+    }
+
+    // Overloaded Constructor
+    Inventory(int capacity_i): capacity(capacity_i){
+        items = new std::vector<std::string>();
+    }
+
+    // Destrcutor
+    ~Inventory(){
+        delete items; // Prevent memory leak by deallocating the dynamic vector
+    }
+
     // Add item to inventory
     void addItem(const std::string& item){
         if (items->size() < capacity)
             items->push_back(item);
         else
-            std::cout << "Invenotry is full, cannot add" << item << std::endl;
+            std::cout << "Invenotry is full, cannot add " << item << std::endl;
     }
 
     // Remove item from inventory
@@ -28,7 +43,7 @@ public:
 
     //Access item by index
     std::string getItem(int index) const{
-        if(index <= 0 && index < items->size())
+        if(index >= 0 && index < items->size())
             return (*items)[index];
         else
             return "Index is out of bounds";
@@ -56,6 +71,33 @@ private:
 };
 
 int main(){
+    // Create an inventory with capacity of 5 items
+    Inventory myInventory(5);
+
+    // Add 5 items
+    myInventory.addItem("Health Potion");
+    myInventory.addItem("Mana Potion");
+    myInventory.addItem("Sword");
+    myInventory.addItem("Shield");
+    myInventory.addItem("Bow");
+
+    // Display current inventory
+    myInventory.displayInventory();
+
+    // Try to add another item when inventory is full
+    myInventory.addItem("Arrow");
+
+    // Remove an item
+    myInventory.removeItem("Mana Potion");
+
+    // Display the item count
+    std::cout << "The inventory now contains: " << myInventory.getItemCount() << " items." << std::endl;
+
+    //Access item by index
+    std::cout << "Item at index 2: " << myInventory.getItem(2) << std::endl;
+
+    // Display final state of inventory
+    myInventory.displayInventory();
     
     std::cout << std::endl << std::endl;
     return 0;
