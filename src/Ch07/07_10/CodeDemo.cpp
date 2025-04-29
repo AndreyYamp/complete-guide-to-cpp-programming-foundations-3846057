@@ -8,18 +8,75 @@
 #include <string>
 #include <utility>
 
-class Person{
-    // Write your code here
+#include <string>
+
+class Person {
+private:
+    std::string _name;
+    float _energy;
+    float _happiness;
+    float _health;
+
+    float Constraints (float attribute){
+        if (attribute > 100)
+            return attribute = 100;
+        else if (attribute < 0)
+            return attribute = 0;
+        else
+            return attribute;
+    }
+
+public:
+    // Proper constructor using initializer list
+    Person(const std::string& name, float energy, float happiness, float health)
+        : _name(name), _energy(energy), _happiness(happiness), _health(health) {}
+
+    // Getter methods
+    std::string getName() const {
+        return _name;
+    }
+
+    float GetEnergy() const {
+        return _energy;
+    }
+
+    float GetHappiness() const {
+        return _happiness;
+    }
+
+    float GetHealth() const {
+        return _health;
+    }
+
+    void Eat(float calories){
+        _energy += (calories * 7.0 / 200);
+        _energy = Constraints(_energy);
+    }
+
+    void Play(float minutes){
+        _happiness += minutes / 2.0;
+        _happiness = Constraints(_happiness);
+        _energy -= minutes / 3.0;
+        _energy = Constraints(_energy);
+    }
+
+    void Sleep(float hours){
+        _energy += hours * 3.75;
+        _energy = Constraints(_energy);
+        _health += hours * 2.5;
+        _health = Constraints(_health);
+    }
 };
+
 
 int main(){
     // Example 1
     std::string name = "Alice";
-    float energy = 40;
+    float energy = 150;
     float happiness = 22;
-    float health = 80;
+    float health = 100;
 
-    float calories = 300;
+    float calories = 3000;
     float playMinutes = 120;
     float sleepHours = 5;
 
