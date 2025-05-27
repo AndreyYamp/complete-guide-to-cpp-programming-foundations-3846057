@@ -29,17 +29,15 @@ deque<pair<string, int>> ManagePetSchedule(const deque<pair<string, int>>& initi
     // Write your code here.
     for (const auto& op : operations) {
         Operation operation = op.first;
-        const std::string& activityDescription = op.second.first;
-        int duration = op.second.second;
-
+        
         switch (operation)
         {
             case Operation::ADD_FRONT:
-                schedule.emplace_front(activityDescription, duration);
+                schedule.emplace_front(op.second);
                 break;
             
             case Operation::ADD_BACK:
-                schedule.emplace_back(activityDescription, duration);
+                schedule.emplace_back(op.second);
                 break;
 
             case Operation::REMOVE_FRONT:
